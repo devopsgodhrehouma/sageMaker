@@ -1,8 +1,9 @@
-Voici une traduction et adaptation du tutoriel en français pour l'utilisation de l'algorithme Linear Learner d'Amazon SageMaker avec le jeu de données MNIST, un ensemble d'images de chiffres manuscrits allant de 0 à 9.
+-------------------
+# Introduction à Amazon SageMaker Linear Learner avec MNIST
+-------------------
 
----
+*Ce tutoriel vous guide dans la configuration et l'entraînement d'un modèle de classification binaire avec Amazon SageMaker pour prédire si une image représente le chiffre 0 ou non.*
 
-## Introduction à Amazon SageMaker Linear Learner avec MNIST
 
 ### Prédiction binaire pour déterminer si un chiffre manuscrit est un 0
 
@@ -212,7 +213,3 @@ Pour économiser les ressources :
 linear_predictor.delete_model()
 linear_predictor.delete_endpoint()
 ```
-
----
-
-Ce tutoriel vous guide dans la configuration et l'entraînement d'un modèle de classification binaire avec Amazon SageMaker pour prédire si une image représente le chiffre 0 ou non.
