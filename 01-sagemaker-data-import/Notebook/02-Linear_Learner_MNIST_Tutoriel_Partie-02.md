@@ -39,6 +39,68 @@ Nous allons travailler avec le jeu de données MNIST, constitué d'images 28 x 2
    role = get_execution_role()
    ```
 
+-----------------------------
+# Explication 1
+-----------------------------
+
+```python
+import boto3
+import sagemaker
+from sagemaker import get_execution_role
+```
+
+1. **`import boto3`** : Cette ligne importe le module `boto3`, qui est le SDK (Software Development Kit) pour interagir avec les services AWS en Python. `boto3` permet de créer, configurer et gérer les ressources et services AWS, comme S3, EC2, et SageMaker.
+
+2. **`import sagemaker`** : Cette ligne importe la bibliothèque `sagemaker`, qui est un SDK conçu pour faciliter l’utilisation d’Amazon SageMaker. `sagemaker` offre des outils pour configurer et déployer des modèles de machine learning facilement sur AWS SageMaker.
+
+3. **`from sagemaker import get_execution_role`** : Cette instruction importe la fonction `get_execution_role` depuis la bibliothèque `sagemaker`. Cette fonction est utilisée pour récupérer le rôle IAM (Identity and Access Management) qui a les permissions nécessaires pour exécuter les tâches dans SageMaker. Ce rôle est essentiel pour que SageMaker puisse accéder aux ressources AWS comme les buckets S3 et les instances de calcul.
+
+
+```python
+sess = sagemaker.Session()
+```
+
+4. **`sess = sagemaker.Session()`** : Cette ligne crée une session SageMaker en utilisant `sagemaker.Session()`. Une session est une instance de la classe `Session` de la bibliothèque `sagemaker`, qui représente la connexion à SageMaker dans votre région AWS actuelle. Elle gère également des informations contextuelles sur les configurations par défaut, comme le bucket S3 à utiliser pour stocker les données.
+
+```python
+region = boto3.Session().region_name
+```
+
+5. **`region = boto3.Session().region_name`** : Cette ligne crée une session avec `boto3` pour obtenir la région AWS actuelle (`region_name`). La région est le centre de données AWS où les ressources seront créées ou gérées (par exemple, "us-west-2" pour l'ouest des États-Unis). Ce code permet de récupérer la région sans la spécifier manuellement, ce qui peut être utile pour des configurations dynamiques.
+
+```python
+downloaded_data_bucket = f"sagemaker-example-files-prod-{region}"
+```
+
+6. **`downloaded_data_bucket = f"sagemaker-example-files-prod-{region}"`** : Cette ligne définit le nom du bucket S3 source dans lequel les fichiers d’exemple sont stockés. Le nom du bucket est construit dynamiquement en ajoutant le nom de la région à un préfixe (`sagemaker-example-files-prod-`). Cela signifie que pour chaque région AWS, il existe un bucket avec les fichiers d'exemples nécessaires à SageMaker, permettant de télécharger les données indépendamment de la région.
+
+```python
+downloaded_data_prefix = "datasets/image/MNIST"
+```
+
+7. **`downloaded_data_prefix = "datasets/image/MNIST"`** : Cette ligne définit le chemin (ou préfixe) de l’emplacement des données d'exemple dans le bucket. Ici, le chemin mène au dossier `datasets/image/MNIST` dans le bucket. Ce chemin contient les données du jeu de données MNIST (images de chiffres manuscrits), couramment utilisées dans les exemples de machine learning.
+
+```python
+bucket = sess.default_bucket()
+```
+
+8. **`bucket = sess.default_bucket()`** : Cette ligne crée un bucket S3 par défaut dans la région actuelle de SageMaker (si ce bucket n'existe pas déjà). SageMaker utilise ce bucket pour stocker les données et les résultats d'entraînement par défaut. Cette instruction facilite la gestion du stockage S3 en évitant de définir manuellement un bucket spécifique.
+
+```python
+prefix = "sagemaker/DEMO-linear-mnist"
+```
+
+9. **`prefix = "sagemaker/DEMO-linear-mnist"`** : Cette ligne définit un préfixe pour l'emplacement dans le bucket S3 où les données et les résultats de l’entraînement seront stockés. `sagemaker/DEMO-linear-mnist` est un dossier dans le bucket par défaut de SageMaker où les fichiers de cet exemple spécifique (en l’occurrence, le modèle MNIST pour une régression linéaire) seront sauvegardés.
+
+```python
+role = get_execution_role()
+```
+
+10. **`role = get_execution_role()`** : Cette ligne appelle la fonction `get_execution_role()` pour obtenir le rôle IAM (Identity and Access Management) qui est attaché au notebook ou à l’instance SageMaker actuelle. Ce rôle détermine les permissions que SageMaker peut utiliser pour interagir avec d’autres services AWS (comme S3) pendant l’entraînement ou le déploiement du modèle.
+
+En somme, ces lignes de code configurent et préparent l’environnement SageMaker pour gérer les données et les ressources S3, ainsi que le rôle d'exécution qui permettra à SageMaker d'interagir en toute sécurité avec les services AWS pendant l'entraînement du modèle.
+
+
 2. **Chargement des données**
 
    Téléchargez les données MNIST et chargez-les en mémoire :
