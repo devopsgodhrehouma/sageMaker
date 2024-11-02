@@ -101,6 +101,24 @@ role = get_execution_role()
 En somme, ces lignes de code configurent et préparent l’environnement SageMaker pour gérer les données et les ressources S3, ainsi que le rôle d'exécution qui permettra à SageMaker d'interagir en toute sécurité avec les services AWS pendant l'entraînement du modèle.
 
 
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------
+-----------------------------
+-----------------------------
+-----------------------------
+-----------------------------
+
+
 # 2. **Chargement des données**
 
    Téléchargez les données MNIST et chargez-les en mémoire :
@@ -168,6 +186,13 @@ train_set, valid_set, test_set = pickle.load(f, encoding="latin1")
 En résumé, ce code télécharge un fichier compressé contenant le jeu de données MNIST depuis un bucket S3, décompresse le fichier, et charge les données pour les utiliser ensuite dans le cadre d’un modèle de machine learning.
 
 
+
+
+-----------------------------
+-----------------------------
+-----------------------------
+-----------------------------
+-----------------------------
 
 
 # 3. **Inspection des données**
@@ -266,6 +291,15 @@ show_digit(train_set[0][30], f"C'est un {train_set[1][30]}")
     - **`f"C'est un {train_set[1][30]}"`** : Utilise une f-string pour créer un titre indiquant la classe ou le chiffre représenté par l’image (par exemple, "C'est un 5"). `train_set[1][30]` contient l’étiquette (ou le chiffre) associé à cette image.
 
 En résumé, ce code permet de visualiser une image de chiffre MNIST avec un titre indiquant sa classe, tout en rendant l'affichage propre (sans axes visibles) et en convertissant l’image en niveaux de gris pour mieux représenter les chiffres.
+
+
+
+
+-----------------------------
+-----------------------------
+-----------------------------
+-----------------------------
+-----------------------------
 
 
 # 4. **Conversion des données**
@@ -370,6 +404,14 @@ validation_set_buf.seek(0)
 En résumé, ce code prépare les données et les labels en tant que tableaux `numpy` au format attendu par SageMaker, les stocke dans des tampons binaires en mémoire (`BytesIO`), puis écrit les données en format dense tensor pour qu’elles puissent être facilement utilisées dans les algorithmes de machine learning de SageMaker.
 
 
+
+-----------------------------
+-----------------------------
+-----------------------------
+-----------------------------
+-----------------------------
+
+
 # 5. **Téléchargement vers S3**
 
    Chargez les données préparées dans S3 pour l'entraînement :
@@ -444,9 +486,13 @@ output_location = f"s3://{bucket}/{prefix}/output"
 En résumé, ce code télécharge les données d'entraînement et de validation dans un bucket S3 en créant des URLs pour chaque fichier et définit également un emplacement pour stocker les résultats de l’entraînement. Ces URLs peuvent ensuite être utilisées dans SageMaker pour configurer et gérer le processus de formation du modèle.
 
 
------------------------------------------
------------------------------------------
------------------------------------------
+-----------------------------
+-----------------------------
+-----------------------------
+-----------------------------
+-----------------------------
+
+
 # Entraînement du Modèle Linéaire
 -----------------------------------------
 
