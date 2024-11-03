@@ -1,4 +1,4 @@
-# Tutoriel Guidé : Amazon SageMaker et Importation de Données
+# Tutoriel # 1 - Amazon SageMaker et Importation de Données
 
 Ce tutoriel vous guide dans la configuration d'un environnement Amazon SageMaker pour créer et utiliser des notebooks Jupyter, télécharger et extraire des données provenant d'une source externe, et charger ces données dans un DataFrame `pandas` pour les analyser.
 
