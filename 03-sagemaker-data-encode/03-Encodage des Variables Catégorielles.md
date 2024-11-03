@@ -1,5 +1,4 @@
-
-### Lab 3.3 - Encodage des Variables Catégorielles
+# Tutorial # 3 - Encodage des Variables Catégorielles
 
 ### Aperçu du Lab
 
