@@ -1,4 +1,4 @@
-### Lab 3.4 - Entraînement d’un Modèle de Machine Learning
+# Tutorial # 4 - Entraînement d’un Modèle de Machine Learning
 
 ### Aperçu du Lab
 
