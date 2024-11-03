@@ -1,5 +1,5 @@
 ----------------------
-# Notebook 4 - Cahier de l'Étudiant
+# Notebook 4 - Entraîner le modèle
 ----------------------
 
 *Ce code vous guide dans la préparation des données, la division en ensembles d'entraînement, de validation, et de test, et l'entraînement d'un modèle XGBoost en utilisant Amazon SageMaker.*
