@@ -1,5 +1,5 @@
 ----------------------
-# Notebook 3.3 - Cahier de l'Étudiant
+# Notebook 3.3 - encoder-les-donnees.md
 ----------------------
 
 *Ce code vous permet d'importer, d'explorer et d'encoder les données d'un jeu de données automobile, en transformant des données catégoriques en valeurs numériques adaptées aux modèles d'apprentissage automatique.*
