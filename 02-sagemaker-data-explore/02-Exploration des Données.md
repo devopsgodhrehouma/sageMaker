@@ -1,4 +1,4 @@
-# Lab 3.2 - Exploration des Données
+# Tutorial # 2 - Exploration des Données
 
 ### Aperçu du Lab
 
