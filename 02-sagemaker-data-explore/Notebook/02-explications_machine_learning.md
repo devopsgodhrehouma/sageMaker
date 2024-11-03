@@ -1,10 +1,8 @@
-----------------
+----------------------
 # Notebook 2
----------------
-
+----------------------
 
 *Ce code vous permet d'importer, d'explorer et de visualiser les données du jeu de données biomédical sur les patients orthopédiques.*
-
 
 ```python
 # Importer les bibliothèques nécessaires
@@ -90,11 +88,9 @@ sns.heatmap(corr_matrix, cmap=colormap, annot=True, fmt=".2f")
 plt.show()
 ``` 
 
-
-------------------------------------------------------
+----------------------
 # Importation des Bibliothèques et Chargement des Données
-------------------------------------------------------
-
+----------------------
 
 Nous commençons par importer les bibliothèques nécessaires et charger le fichier de données dans notre environnement de travail.
 
@@ -122,48 +118,43 @@ data = arff.loadarff('column_2C_weka.arff')
 df = pd.DataFrame(data[0])
 ```
 
-------------------------------------------------------
-------------------------------------------------------
-------------------------------------------------------
-------------------------------------------------------
+----------------------
 # Explication du Code
-------------------------------------------------------
+----------------------
 
 1. **warnings** : La bibliothèque `warnings` nous permet de gérer les avertissements, en les désactivant ici pour simplifier la sortie.
 2. **requests** : `requests.get()` télécharge le fichier compressé à partir de l'URL fournie.
 3. **zipfile** : `zipfile.ZipFile()` est utilisé pour manipuler des fichiers `.zip`. Ici, il extrait le contenu dans le répertoire de travail.
 4. **arff** : Le format `.arff` est un format de fichier utilisé pour les données de la base de données UCI. `arff.loadarff()` le lit et retourne un tableau de données, que nous convertissons ensuite en un DataFrame Pandas pour faciliter l'analyse.
 
-------------------------------------------------------
-------------------------------------------------------
-------------------------------------------------------
-
+----------------------
 # Exploration des Données
+----------------------
 
 Une fois les données chargées, nous commençons par explorer leurs dimensions, leurs colonnes et leurs types pour bien comprendre ce que chaque colonne représente.
 
-#### Taille des Données
+### Taille des Données
 ```python
 # Examiner le nombre de lignes et de colonnes dans le jeu de données
 df.shape
 ```
 - **df.shape** : Affiche le nombre de lignes et de colonnes dans le DataFrame pour savoir combien d’enregistrements (patients) et de caractéristiques sont présents dans le jeu de données.
 
-#### Liste des Colonnes
+### Liste des Colonnes
 ```python
 # Obtenir la liste des noms de colonnes
 df.columns
 ```
 - **df.columns** : Affiche les noms des colonnes, qui incluent les six caractéristiques biomécaniques et la colonne cible (`class`).
 
-#### Types des Colonnes
+### Types des Colonnes
 ```python
 # Afficher les types de données pour chaque colonne
 df.dtypes
 ```
 - **df.dtypes** : Montre les types de données pour chaque colonne. Ici, nous devrions voir que les six caractéristiques biomécaniques sont des `floats`, tandis que `class` est un type catégorique.
 
-#### Statistiques Descriptives
+### Statistiques Descriptives
 
 Nous allons utiliser la fonction `describe()` pour obtenir des statistiques descriptives sur les colonnes.
 
@@ -175,7 +166,7 @@ df['pelvic_incidence'].describe()
 
 **Défi :** Utilisez `describe()` sur d'autres colonnes pour rechercher des valeurs extrêmes.
 
-#### Statistiques Descriptives pour Tout le DataFrame
+### Statistiques Descriptives pour Tout le DataFrame
 
 ```python
 # Obtenir les statistiques descriptives pour toutes les colonnes
@@ -183,15 +174,13 @@ df.describe()
 ```
 - **df.describe()** : Résume les statistiques pour toutes les colonnes numériques du DataFrame. 
 
-------------------------------------------------------
-------------------------------------------------------
-------------------------------------------------------
-
+----------------------
 # Visualisation des Données
+----------------------
 
 Nous allons maintenant visualiser les données pour observer les distributions et les éventuelles anomalies.
 
-#### Graphique des Caractéristiques
+### Graphique des Caractéristiques
 
 ```python
 import matplotlib.pyplot as plt
@@ -204,7 +193,7 @@ plt.show()
 
 - **df.plot()** : Génère un graphique de ligne pour chaque colonne du DataFrame afin de voir l'évolution des valeurs.
 
-#### Graphiques de Densité
+### Graphiques de Densité
 
 Les graphiques de densité montrent la distribution des valeurs pour chaque caractéristique.
 
@@ -217,13 +206,13 @@ plt.show()
 - **subplots=True, layout=(4,2)** : Crée des sous-graphiques organisés en une grille de 4x2.
 - **figsize=(12,12)** : Définit la taille de la figure.
 
----
-
-### Analyse du Degré de Spondylolisthésis
+----------------------
+# Analyse du Degré de Spondylolisthésis
+----------------------
 
 Nous analysons la colonne `degree_spondylolisthesis` pour repérer des anomalies dans les données.
 
-#### Graphique de Densité
+### Graphique de Densité
 
 ```python
 # Densité pour 'degree_spondylolisthesis'
@@ -231,7 +220,7 @@ df['degree_spondylolisthesis'].plot.density()
 ```
 - **plot.density()** : Affiche la distribution de `degree_spondylolisthesis`.
 
-#### Histogramme
+### Histogramme
 
 ```python
 # Histogramme pour 'degree_spondylolisthesis'
@@ -239,7 +228,7 @@ df['degree_spondylolisthesis'].plot.hist()
 ```
 - **plot.hist()** : Montre la fréquence des valeurs pour identifier les pics dans la distribution.
 
-#### Box Plot
+### Box Plot
 
 ```python
 # Boîte à moustaches pour 'degree_spondylolisthesis'
@@ -247,15 +236,13 @@ df['degree_spondylolisthesis'].plot.box()
 ```
 - **plot.box()** : Montre les valeurs extrêmes, les quartiles et les médianes.
 
-------------------------------------------------------
-------------------------------------------------------
-------------------------------------------------------
-
+----------------------
 # Analyse de la Cible
+----------------------
 
 Pour entraîner un modèle de machine learning, nous devons examiner et transformer la colonne cible.
 
-#### Distribution de la Cible
+### Distribution de la Cible
 
 ```python
 # Compter le nombre d'occurrences de chaque classe
@@ -263,7 +250,9 @@ df['class'].value_counts()
 ```
 - **value_counts()** : Affiche le nombre d'occurrences pour chaque classe (`Normal` et `Abnormal`).
 
-#### Conversion de la Cible en Valeurs Numériques
+### Conversion de la Cible en Vale
+
+urs Numériques
 
 Les modèles de ML nécessitent des valeurs numériques pour la cible.
 
@@ -274,7 +263,7 @@ df['class'] = df['class'].replace(class_mapper)
 ```
 - **replace(class_mapper)** : Remplace les valeurs `Normal` et `Abnormal` par 0 et 1 respectivement.
 
-#### Scatter Plot pour la Cible
+### Scatter Plot pour la Cible
 
 Nous observons la relation entre `degree_spondylolisthesis` et `class`.
 
@@ -284,14 +273,11 @@ df.plot.scatter(y='degree_spondylolisthesis', x='class')
 ```
 - **plot.scatter()** : Affiche la répartition des valeurs de `degree_spondylolisthesis` par rapport aux classes `Normal` et `Abnormal`.
 
-------------------------------------------------------
-------------------------------------------------------
-------------------------------------------------------
+----------------------
 # Visualisation de Multiples Variables
---------------------------------
+----------------------
 
-
-# Box Plot Groupé par Classe
+### Box Plot Groupé par Classe
 
 ```python
 # Boîtes à moustaches groupées par classe
@@ -300,7 +286,7 @@ df.groupby('class').boxplot(fontsize=20, rot=90, figsize=(20,10), patch_artist=T
 - **groupby('class')** : Regroupe les données par classe.
 - **boxplot()** : Crée un box plot pour chaque caractéristique, séparé par classe.
 
-# Matrice de Corrélation
+### Matrice de Corrélation
 
 La corrélation entre les variables peut nous donner des indications sur les relations entre les caractéristiques.
 
@@ -312,9 +298,7 @@ corr_matrix["class"].sort_values(ascending=False)
 - **df.corr()** : Calcule la corrélation entre chaque paire de caractéristiques.
 - **sort_values()** : Trie les corrélations pour observer les caractéristiques les plus corrélées avec `class`.
 
-
-
-# Matrice de Dispersion
+### Matrice de Dispersion
 
 La matrice de dispersion montre les relations pairées entre les caractéristiques.
 
@@ -325,12 +309,9 @@ plt.show()
 ```
 - **scatter_matrix()** : Crée une matrice de graphiques de dispersion pour visualiser les relations entre les caractéristiques.
 
-
-------------------------------------------------------
-------------------------------------------------------
-------------------------------------------------------
-
+----------------------
 # Carte de Chaleur
+----------------------
 
 Une carte de chaleur montre la corrélation entre les caractéristiques sous forme de couleurs.
 
