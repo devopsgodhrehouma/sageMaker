@@ -1,6 +1,6 @@
 # Explication détaillée du code par étapes
 
-Dans ce guide, nous allons explorer comment déployer un modèle de machine learning entraîné, effectuer des prédictions individuelles et par lot, et finalement évaluer les résultats. Nous utiliserons Amazon SageMaker pour faciliter ce processus. Chaque étape sera accompagnée d'explications détaillées pour vous aider à comprendre ce que nous faisons et pourquoi nous le faisons.
+*Dans ce guide, nous allons explorer comment déployer un modèle de machine learning entraîné, effectuer des prédictions individuelles et par lot, et finalement évaluer les résultats. Nous utiliserons Amazon SageMaker pour faciliter ce processus. Chaque étape sera accompagnée d'explications détaillées pour vous aider à comprendre ce que nous faisons et pourquoi nous le faisons.*
 
 ## Table des matières
 
