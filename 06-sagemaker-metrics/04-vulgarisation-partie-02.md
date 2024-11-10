@@ -1,4 +1,6 @@
-Je vous présente une table récapitulative des principales métriques de performance en classification binaire, avec une brève explication pour chacune :
+# Récap 1
+Je vous présente une table récapitulative des principales métriques de performance en classification binaire, 
+avec une brève explication pour chacune :
 
 ```
 +-------------------------+--------------------------------------------------------------------------------------------+
