@@ -1,5 +1,15 @@
 **Équations des métriques de performance :**
 
+---
+**Légende :**
+
+- $\text{VP}$ : Vrais Positifs (True Positives)
+- $\text{VN}$ : Vrais Négatifs (True Negatives)
+- $\text{FP}$ : Faux Positifs (False Positives)
+- $\text{FN}$ : Faux Négatifs (False Negatives)
+
+----
+
 **1. Sensibilité (Recall, Taux de Vrais Positifs, TPR)**
 
 $$
