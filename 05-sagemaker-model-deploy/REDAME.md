@@ -1,5 +1,5 @@
 
-# Guide Pédagogique : Étapes Clés du Déploiement d'un Modèle de Machine Learning avec SageMaker
+# Étapes Clés du Déploiement d'un Modèle de Machine Learning avec SageMaker
 
 Ce guide vous accompagne à travers les étapes essentielles pour déployer un modèle de machine learning en utilisant Amazon SageMaker. Chaque section est conçue pour vous aider à comprendre le processus de manière claire et pédagogique.
 
