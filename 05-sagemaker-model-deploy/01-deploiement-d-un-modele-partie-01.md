@@ -1,4 +1,4 @@
-# Explication détaillée du notebook pour débutants
+# Explication 
 
 Dans ce notebook, nous allons apprendre à déployer un modèle de machine learning entraîné, à effectuer des prédictions, puis à exécuter une transformation par lot pour prédire sur un ensemble de données complet. Nous travaillerons avec Amazon SageMaker, un service qui facilite le développement, l'entraînement et le déploiement de modèles de machine learning à grande échelle.
 
